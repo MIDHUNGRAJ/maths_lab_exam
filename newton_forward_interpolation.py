@@ -1,17 +1,6 @@
 # Newton's Forward Interpolation
 
 def forward_difference_table(x, y):
-    """
-    Constructs the forward difference table for the given data points.
-    
-    Args:
-        x (list): A list of x-values.
-        y (list): A list of y-values.
-        
-    Returns:
-        tuple: A tuple containing the x-values, the y-values (which are modified to contain the forward differences),
-               and the value 'h' (the constant interval between x-values).
-    """
     n = len(y)
     
     # Create a copy of y to avoid modifying the original list if it's not needed elsewhere
@@ -28,17 +17,7 @@ def forward_difference_table(x, y):
     return x, y_copy, h
 
 def newton_forward_interpolation(x, y, x_interp):
-    """
-    Performs Newton's forward interpolation.
     
-    Args:
-        x (list): A list of x-values.
-        y (list): A list of y-values.
-        x_interp (float): The value at which to interpolate.
-        
-    Returns:
-        float: The interpolated value.
-    """
     x_vals, diff_table, h = forward_difference_table(x, y)
     
     # Calculate u
@@ -51,7 +30,6 @@ def newton_forward_interpolation(x, y, x_interp):
     # Calculate the terms of the Newton's formula and add them to the sum
     for i in range(1, n):
         # Calculate the i-th term of the formula
-        # This is the numerator of the fraction: u * (u-1) * ... * (u-i+1)
         numerator = 1.0
         for j in range(i):
             numerator = numerator * (u - j)
@@ -67,10 +45,9 @@ def newton_forward_interpolation(x, y, x_interp):
     return interp_value
 
 # Example usage from the image
-# You can change these values to your own data
 x_data = [1, 3, 5, 7]
-y_data = [24, 120, 336, 720]  # Example: y = x^3
-interpolation_point = 2     # The point to interpolate at
+y_data = [24, 120, 336, 720] 
+interpolation_point = 2  
 
 # Perform interpolation
 interpolated_y = newton_forward_interpolation(x_data, y_data, interpolation_point)
