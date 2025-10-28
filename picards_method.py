@@ -12,5 +12,5 @@ iterations = 2  # Number of iterations
 
 # Perform Picard iterations
 for i in range(iterations):
-    y = y0 + integrate(f.substitute(y=y), x, x0, x)  # Update y using the integral of f
+    y = y0 + integrate(f.substitute(y=y), x, x0, x)
     print(f"Iteration {i+1}: y_{i+1}(x) = {y}")
